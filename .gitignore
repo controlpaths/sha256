@@ -1,3 +1,7 @@
 
+# GTKWave files
 *.vcd
 *.gtkw
+
+# Vivado project files
+./project

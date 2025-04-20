@@ -1,0 +1,6 @@
+{
+  "verilog.linting.verilator.enabled": true,
+  "verilog.linting.verilator.includePath": "../src/",
+  "verilog.linting.verilator.arguments": "-Wall --timing",
+  "verilog.linting.verilator.runAtFileLocation": true
+}
