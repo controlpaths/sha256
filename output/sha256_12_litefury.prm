@@ -1,0 +1,11 @@
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX4
+Size               32M
+Start Address      0x00000000
+End Address        0x01FFFFFF
+
+Addr1         Addr2         Date                    File(s)
+0x00000000    0x002AECB3    Jun 22 09:31:06 2025    /home/pablo/workspace_local/sha256/project/litefury_shacore.runs/impl_1/litefury_shacore_bd_wrapper.bit

@@ -1,0 +1,31 @@
+## Late constraints
+
+# PCIe lanes
+#set_property LOC GTPE2_CHANNEL_X0Y6 [get_cells {litefury_rp5_bd_i/xdma_0/inst/litefury_rp5_bd_xdma_0_0_pcie2_to_pcie3_wrapper_i/pcie2_ip_i/inst/inst/gt_top_i/pipe_wrapper_i/pipe_lane[0].gt_wrapper_i/gtp_channel.gtpe2_channel_i}]
+#set_property LOC GTPE2_CHANNEL_X0Y4 [get_cells {litefury_rp5_bd_i/xdma_0/inst/litefury_rp5_bd_xdma_0_0_pcie2_to_pcie3_wrapper_i/pcie2_ip_i/inst/inst/gt_top_i/pipe_wrapper_i/pipe_lane[1].gt_wrapper_i/gtp_channel.gtpe2_channel_i}]
+#set_property LOC GTPE2_CHANNEL_X0Y5 [get_cells {litefury_rp5_bd_i/xdma_0/inst/litefury_rp5_bd_xdma_0_0_pcie2_to_pcie3_wrapper_i/pcie2_ip_i/inst/inst/gt_top_i/pipe_wrapper_i/pipe_lane[2].gt_wrapper_i/gtp_channel.gtpe2_channel_i}]
+#set_property LOC GTPE2_CHANNEL_X0Y7 [get_cells {litefury_rp5_bd_i/xdma_0/inst/litefury_rp5_bd_xdma_0_0_pcie2_to_pcie3_wrapper_i/pcie2_ip_i/inst/inst/gt_top_i/pipe_wrapper_i/pipe_lane[3].gt_wrapper_i/gtp_channel.gtpe2_channel_i}]
+
+# PCIe lane 0
+
+# PCIe lane 1
+
+# PCIe lane 2
+
+# PCIe lane 3
+
+# PCIe refclock
+set_property PACKAGE_PIN F6 [get_ports {pcie_clkin_clk_p[0]}]
+set_property PACKAGE_PIN E6 [get_ports {pcie_clkin_clk_n[0]}]
+
+# Other PCIe signals
+set_property PACKAGE_PIN G1 [get_ports {pcie_clkreq_l[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {pcie_clkreq_l[0]}]
+
+set_property PACKAGE_PIN J1 [get_ports pcie_reset]
+set_property IOSTANDARD LVCMOS33 [get_ports pcie_reset]
+
+
+
+set_property LOC GTPE2_CHANNEL_X0Y6 [get_cells {litefury_shacore_bd_i/xdma_0/inst/litefury_shacore_bd_xdma_0_0_pcie2_to_pcie3_wrapper_i/pcie2_ip_i/inst/inst/gt_top_i/pipe_wrapper_i/pipe_lane[0].gt_wrapper_i/gtp_channel.gtpe2_channel_i}]
+set_property PACKAGE_PIN A10 [get_ports {pcie_7x_mgt_rtl_0_rxn[0]}]

@@ -4,4 +4,9 @@
 *.gtkw
 
 # Vivado project files
-./project
+project/
+
+*.log
+*.jou
+*.str
+

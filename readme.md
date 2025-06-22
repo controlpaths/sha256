@@ -1,8 +1,10 @@
 # Core SHA-256
 
+## sha256_core
+
 Module to compute the hash SHA256 of a data vector up to 55 bytes. A hash is a mathematics function that converts any length data into a fixed-length value, generally represented as a data string. It is widely used to verify the integrity of data and in the field of cibersecurity.
 
-## Interface
+### Interface
 
 |Name|Width|Direction|Description|
 |-|-|-|-|
@@ -19,9 +21,9 @@ Module to compute the hash SHA256 of a data vector up to 55 bytes. A hash is a m
 |`m_axis_tdata`|32|OUT|Master AXI4 Stream tdata signal|
 |`m_axis_tlast`|32|OUT|Master AXI4 Stream tlast signal|
 
-## How to use this module
+### How to use this module
 
-### Sending data
+#### Sending data
 
 The SHA-256 module features a Slave AXI4 Stream interface to receive the data. This implementation only allows to send up to 55 bytes of data.
 
@@ -50,7 +52,7 @@ When all data is sent, the signal `s_axis_tlast` must be set in order to inform 
 ![](./doc/slave_stream.png)
 
 
-### Compute SHA256
+#### Compute SHA256
 
 The calculation of the SHA256 is explained very well in [this](https://sha256algorithm.com/) web page. THE SHA256 can de separate into two different steps, The first step is executen once data is received, and it consists on calculate all the values of the `w` array. The firsts 16 values are filled with the input bytes, followed by 1 `0x80`, and the amount of bytes in the position 15. The rest of the values are calculated following the next equation.
 
@@ -96,7 +98,7 @@ hash <= {a_reg+h0, b_reg+h1, c_reg+h2, d_reg+h3, e_reg+h4, f_reg+h5, g_reg+h6, h
 
 Extra iterations are needed to send the hash value over AXI4 Stream interface. Notice that the hask calculation is restarted only when a complete read process is executed. If you need to restart the process, an external reset in the module will be needed.
 
-#### Series processing
+##### Series processing
 
 Due to the natuire of the SHA-256 calculation, the process can ve divided into two different processes, the `w_array` calculation, and the set of iterations. In a computer with only one processor available, these two proceses must be executed in series.
 
@@ -104,7 +106,7 @@ In addition, since each step requires mores than one calculation, each one will 
 
 ![](./doc/sha256_ser.png)
 
-#### Parallel processing
+##### Parallel processing
 
 because of the design of the FPGA, they can execute parallel processes. In the case of the SHA-256 calculation, once the first 16 values of the `w_matrix` are calculates (the first 16 depend on the input data), since for the first iteration of the second process only needs the first value of the `w_matrix`, the process can start at the same time of the first one, so both processes can be executed at the same time, reducing the amount of cycles needed. In this case, the FPGA can execute for each cycle all the operations needed, so the ampunt of cycles are equal to the clock cycles needed. 
 
@@ -112,7 +114,7 @@ This will be possible as long as the timing constraints are met.
 
 ![](./doc/sha256_par.png)
 
-### Reading HASH
+#### Reading HASH
 
 When the hash calculation is complete, `m_axis_tvalid` signal will be set. At this point, when the signal `m_axis_tready` will be set by the host, the hash will be sent in 8 different transactions to complete the 256 bits.
 
@@ -126,8 +128,12 @@ When the hash calculation is complete, `m_axis_tvalid` signal will be set. At th
 
 ![](./doc/master_stream.png)
 
-# Verification
+## Verification
 
 This repository includes a test folder with a simple SHA256 calculation of a 5 byte data array. To launch the test you just need to call the `run.bat` if you are on Windows, or `run.sh` if you are on Linux.
 
 The test uses `iverilog` to simulate the module. In order to be able of executing the sript, `iverilog` must be added to the environment variables or PATH.
+
+## AXI SHA256
+
+### `sha256_core_pif.v`
