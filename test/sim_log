@@ -1,2 +1,2 @@
 VCD info: dumpfile data.vcd opened for output.
-../test/sha256_manager_tb.sv:54: $finish called at 569905 (1ns)
+../test/sha256_manager_tb.sv:51: $finish called at 34385 (1ns)
